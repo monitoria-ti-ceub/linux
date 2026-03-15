@@ -15,15 +15,17 @@ O software de sistema disponibiliza uma interface cujo, através dessa interface
 
 - Se o SO é software, como ele controla o hardware?
 
-Através do kernel, o "coração" do sistema operacional, que com o uso de drivers de dispositivos (softwares especializados que atuam no nível de kernel) faz com que os componentes de hardware funcionem e possam ser controlados pelo sistema operacional como um todo.
+Através do kernel, o "coração" do sistema operacional, que com o uso de drivers de dispositivos (softwares especializados que atuam no nível de kernel) faz com que os componentes de hardware funcionem e possam ser controlados no nível do sistema operacional.
 
 - Como o hardware "obedece" o software?
 
 - O kernel é o sistema operacional inteiro?
 
-Não! Porém ele é parte mais importante do sistema operacional, ele é como o alicerce do sistema operacional. No caso do Linux, o Linux é o próprio kernel, que devido a sua natureza "open-source", diversos desenvolvedores ao redor do mundo utilizam desse kernel e criam seus próprios sistemas operacionais.
+Não! Porém ele é parte mais importante do sistema operacional, ele é o alicerce do sistema operacional. No caso do Linux, o Linux é o próprio kernel, que devido a sua natureza "open-source", diversos desenvolvedores ao redor do mundo utilizam esse kernel e criam suas próprias distribuições do Linux.
 
 - Qual é a diferença entre kernel, sistema operacional e distribuição?
+
+Kernel é o coração de um sistema operacional, o sistema operacional é o conjunto de softwares que juntos faz com que o usuário possa interagir com o computador e as distribuições são os diferentes "sabores" de Linux, cada um com suas peculiaridades, sejam eles diferentes gerenciadores de pacotes, gerenciadores de sistemas, funcionalidades, entre outros.
 
 - O processador executa o SO da mesma forma que executa qualquer outro programa?
 
