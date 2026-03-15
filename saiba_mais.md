@@ -1,0 +1,158 @@
+## Fundamentos de Sistemas Operacionais
+
+- Todo sistema operacional é software?
+
+Sim. Um sistema operacional é software. Ele não é hardware porque não é uma peça física, é um conjunto de instruções e programas armazenados em algum meio (SSDs, HDs, até pen-drives!) e carregados para a memória quando o computador inicia.
+Mas ele não é um programa qualquer. Ele é um software de sistema, ou seja, um software responsável por criar o ambiente em que os outros programas funcionam.
+
+- Ele é um programa ou um conjunto de programas?
+
+Na prática, um sistema operacional não costuma ser um único programa isolado, ele é formado por várias partes com funções diferentes, como:
+
+- Qual é a diferença entre software comum e software de sistema?
+
+- Se o SO é software, como ele controla o hardware?
+
+- Como o hardware "obedece" o software?
+
+- O kernel é o sistema operacional inteiro?
+
+- Qual é a diferença entre kernel, sistema operacional e distribuição?
+
+- O processador executa o SO da mesma forma que executa qualquer outro programa?
+
+A CPU executa instruções, então nesse sentido, o sistema operacional também é executado como código de máquina. Mas SOs executam partes críticas em modo privilegiado, com acesso maior ao hardware e a recursos protegidos, enquanto aplicativos comunds executam em modo usuário, com restrições.
+Isso existe para segurança e estabilidade. Se qualquer aplicativo pudesse acessar diretamente tudo no hardware, o sistema seria muito mais fácil de quebrar.
+
+- O SO fica rodando o tempo todo? Onde?
+
+Sim! Enquanto o computador está em funcionamento, partes do SO ficam carregadas e ativas o tempo todo. Ele fica armazenado de forma persistente no disco e executando a partir da memória RAM depois de ser carregado no boot.
+    - No armanezamento, ele está "guardado";
+    - Na RAM, ele está "em uso";
+    - Na CPU, suas instruções estão sendo efetivamente executadas.
+
+## O computador
+
+- O que acontece quando apertamos o botão de ligar?
+
+O computador começa a receber e estabilizar energia nos componentes. A placa-mãe, a fonte e outros circuitos entram em funcionamento, e a CPU passa a procurar sua instrução inicial de execução.
+
+- O que liga primeiro?
+    - A energia é estabilizada;
+    - A CPU começa a executar;
+    - O firmware testa e identifica componentes;
+    - Ela procura um dispositivo de boot;
+    - O bootloader carrega;
+    - O bootloader carrega o kernel;
+    - O kernel assume e sobe o sistema.
+
+- Qual é a diferença entre ligar o computador e iniciar o SO?
+Alguém precisa:
+    - Inicializar minimamente o hardware;
+    - Verificar se há memória e dispositivos básicos;
+    - Localizar de onde virá o sistema operacional;
+    - Transferir esse sistema para a memória.
+Quem faz esse papel inicial é o firmware, junto com o processo de boot.
+
+Ligar o computador é fornecer energia e iniciar os circuitos básicos. Iniciar o SO é uma etapa posterior, quando o firmware e o processo de boot já localizaram e carregam o sistema.
+
+- Por que o SO não é a primeira coisa a ser executada?
+
+- O que é firmware?
+
+- Qual é a diferença entre BIOS e UEFI?
+
+- O que é POST?
+
+- O que o computador testa quando liga?
+
+- Quais dispotivios são verificados na inicialização?
+
+- Por que o computador procura um dispositivo de boot?
+
+- O que faz um disco ser bootável?
+
+- O que acontece se não houver dispositivo de boot?
+
+- O que é bootloader?
+
+- Quando o kernel entra em execução e o que acontece quando ele carrega?
+
+- Como a interface gráfica aparece depois da inicialização?
+
+## Unix
+
+- Por que Unix foi tão influente?
+
+- O Linux é Unix?
+
+- O que significa Unix-like?
+
+- O que significa a filosofia Unix?
+
+## Windows
+
+- O que muda entre Windows e Linux se ambos fazem o papel de SO?
+
+- O Windows tem kernel?
+
+- O Windows usa terminal também?
+
+- Por que a maioria dos programas comerciais são feitos primeiro para Windows?
+
+- O que o Windows esconde do usuário que o Linux costuma expôr mais?
+
+## Linux
+
+- Linux é sistema operacional ou kernel?
+
+- O que é uma distribuição Linux?
+
+- Por que existem tantas distribuições?
+
+- O que muda de uma distro para outra?
+
+- O Linux precisa de interface gráfica?
+
+- Dá pra usar Linux só pelo terminal?
+
+- Linux é mais difícil ou só dá mais controle ao usuário?
+
+- Como Linux é seguro?
+
+- Qual é a diferença entre software livre e open-source?
+
+## Dual Boot
+
+- Como dois SOs podem coexistir no mesmo computador?
+
+- Eles rodam ao mesmo tempo?
+
+- Como o computador sabe qual sistema iniciar?
+
+- O que é partição?
+
+- O que pode dar errado instalando dual boot?
+
+- O que é GRUB?
+
+- O que acontece se o bootloader for sobrescrito?
+
+- Dual boot é melhor do que máquina virtual?
+
+## BIOS/UEFI e Secure Boot
+
+- O que é UEFI e por que substituiu a BIOS tradicional?
+
+- O que é firmware?
+
+- BIOS/UEFI fica no disco?
+
+- O que é Secure Boot?
+
+- O Secure Boot impede Linux?
+
+- Por que alguns sistemas são aceitos e outros não?
+
+- O que significa uma chave confiável no processo de boot?
+

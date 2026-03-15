@@ -57,7 +57,7 @@ A oficina será conduzida por meio de:
 - Permissões de leitura, escrita e execução;
 - Segurança e controle de acesso.
 
-9. sudo
+9. `sudo`
 - O papel do `sudo`;
 - Os privilégios administrativos.
 
