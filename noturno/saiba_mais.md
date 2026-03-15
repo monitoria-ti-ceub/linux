@@ -118,15 +118,27 @@ UEFI (Unified Extensible Firmware Interface) é o firmware moderno que substitui
 
 - Linux é sistema operacional ou kernel?
 
+O sistema operacional GNU/Linux é comumente referido apenas como Linux. No entanto, Linux é apenas o kernel (núcleo) do sistema operacional, responsável por atuar como intermediário entre o hardware e os softwares. O sistema completo normalmente inclui ferramentas do projeto GNU, por isso o nome GNU/Linux.
+
 - O que é uma distribuição Linux?
+
+Distribuição Linux, ou “distro”, é um sistema operacional completo construído com ferramentas do projeto GNU e utilizando o kernel Linux como núcleo.
 
 - Por que existem tantas distribuições?
 
+O motivo de existirem tantas distribuições é que o GNU oferece um vasto conjunto de softwares livres e de código aberto, permitindo que diferentes pessoas criem seus próprios sistemas operacionais conforme suas necessidades.
+
 - O que muda de uma distro para outra?
+
+As diferenças entre as distribuições Linux vêm das escolhas de softwares e ferramentas do projeto GNU, o que pode influenciar até mesmo a filosofia da distribuição. Entre os principais pontos que diferenciam uma distro da outra estão: o gerenciador de pacotes (como os softwares são instalados e atualizados), os repositórios (quantidade e versão dos programas disponíveis) e as ferramentas de configuração que já vêm pré-instaladas.
 
 - O Linux precisa de interface gráfica?
 
+Não, o Linux não precisa de interface gráfica (GUI) para funcionar. A base do sistema é operada via linha de comando (terminal)
+
 - Dá pra usar Linux só pelo terminal?
+
+Sim, é perfeitamente possível utilizar o Linux exclusivamente pelo terminal (CLI - Command Line Interface), sendo esta uma prática comum em servidores e por usuários avançados. O terminal oferece controle total, automação e rapidez, permitindo gerenciar arquivos, instalar softwares e configurar o sistema sem interface gráfica. 
 
 - Linux é mais difícil ou só dá mais controle ao usuário?
 
