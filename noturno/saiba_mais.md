@@ -68,7 +68,11 @@ Ligar o computador é fornecer energia e iniciar os circuitos básicos. Iniciar 
 
 - O que é firmware?
 
+Firmware é um software de baixo nível gravado em um hardware (chip físico), geralmente em memória ROM ou flash. Ele é responsável por controlar funções básicas do dispositivo, como inicialização do hardware e comunicação com outros componentes do sistema.
+
 - Qual é a diferença entre BIOS e UEFI?
+
+UEFI (Unified Extensible Firmware Interface) é o firmware moderno que substitui a BIOS tradicional, oferecendo uma interface gráfica mais amigável, opções de segurança (como o Secure Boot) e inicialização mais rápida. Enquanto a BIOS é limitada a 16 bits e a discos de até 2 TB, a UEFI opera em 32 ou 64 bits e oferece suporte a discos com mais de 2 TB.
 
 - O que é POST?
 
