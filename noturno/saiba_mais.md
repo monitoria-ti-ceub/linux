@@ -189,19 +189,31 @@ Software livre é baseado na ética e na filosofia das quatro liberdades: execut
 
 - Como dois SOs podem coexistir no mesmo computador?
 
+Dois sistemas operacionais podem coexistir em um mesmo computador ao particionar um disco rígido (HD ou SSD, por exemplo) e instalar cada sistema operacional em uma partição separada.
+
 - Eles rodam ao mesmo tempo?
 
+Pelo método de partições, dois sistemas operacionais não rodam simultaneamente; porém, é possível executá-los ao mesmo tempo através de técnicas de virtualização (ambientes virtuais), permitindo, por exemplo, criar uma máquina virtual Linux dentro do Windows usando o VirtualBox.
+  
 - Como o computador sabe qual sistema iniciar?
 
 - O que é partição?
 
 - O que pode dar errado instalando dual boot?
 
+O dual boot é uma prática comum, mas é altamente recomendável fazer backup dos arquivos antes, já que a criação de partições envolve risco de perda de dados. Um erro clássico é particionar o disco de forma incorreta e acabar formatando acidentalmente uma partição com arquivos importantes.
+
 - O que é GRUB?
+
+O GNU GRUB (GRand Unified Bootloader) é o gerenciador de inicialização padrão da maioria das distribuições Linux.
 
 - O que acontece se o bootloader for sobrescrito?
 
+Voçê perde acesso ao sistema operacional, pois não consegue inicializa-lo.
+
 - Dual boot é melhor do que máquina virtual?
+
+A escolha entre dual boot e máquina virtual (VM) depende do seu objetivo e hardware. Use dual boot para desempenho máximo e uso nativo. Escolha máquina virtual para testes seguros, conveniência de rodar dois sistemas simultaneamente e facilidade de uso sem alterar partições.
 
 ## BIOS/UEFI e Secure Boot
 
