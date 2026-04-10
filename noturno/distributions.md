@@ -115,7 +115,7 @@
 ### 17) SteamOS
 - **Nível:** Intermediário
 - **Link (referência/infos):** https://store.steampowered.com/steamos/
-- **Link (Download/por conta em risco):**https://help.steampowered.com/pt-br/faqs/view/65B4-2AA3-5F37-4227
+- **Link  (Download/por conta em risco):** https://help.steampowered.com/pt-br/faqs/view/65B4-2AA3-5F37-4227
 - **Por que escolher:** foco em experiência tipo console e jogos Steam.
 - **Observação:** no PC “geral” pode não ser tão “desktop-first”; muita gente usa alternativas similares quando quer SteamOS fora do Steam Deck.
 
