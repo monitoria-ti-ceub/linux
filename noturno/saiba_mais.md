@@ -552,3 +552,34 @@ Também serve para trabalhar com contexto local, tornar comando e script mais fl
 ### Posso misturar `..` com nomes de pastas no mesmo caminho?
 
 Pode! `../aulas/aula1.md`
+
+## Shell, Bashscript, Ferramentas e Comandos
+
+### O que são variáveis de ambiente?
+
+São valores guardados que o sistema e programas utilizam.
+Exemplos: $USER, $PATH, $HOME
+
+### Como funcionam os redirecionamentos?
+
+Você redireciona algo de um output para um arquivo.
+Exemplos: cat arquivo.txt > arquivo2.txt - Tudo mostrado pelo cat sera sobrescrito em arquivo2.txt.
+> -> para sobrescrever.
+>> -> para adicionar ao arquivo.
+< -> para sobrescrever esse arquivo com algo de outro arquivo.
+<< -> para adcionar à esse arquivo algo de outro arquivo.
+2> -> apra sobrescrever o arquivo com o erro do comando.
+2>> -> para adcionar ao arquivo o erro do comando.
+### O que é o stdin, stdout, stderr?
+São como "canais" de comunicação.
+Exemplo: Quando você digita o comando "ls" vai para o stdin (0), o resultado de ls vai para o stdout (1) e se der erro vai para o stderr (2).
+
+### Como funciona o grep?
+
+Ele funciona como um filtro, conseguindo ler arquivos somente com a parte do texto que te interesse.
+Exemplo: grep a Nomes.txt -> ele vai te da um output de todos os nomes que contenham a letra a
+
+### Como o Pipe funciona?
+
+Ele conecta comandos, o output do primeiro é a entrada do segundo.
+Exemplo: cat arquivo.txt | grep a -> o grep vai agir no output do cat arquivo.txt.
