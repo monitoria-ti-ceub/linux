@@ -564,12 +564,19 @@ Exemplos: $USER, $PATH, $HOME
 
 Você redireciona algo de um output para um arquivo.
 Exemplos: cat arquivo.txt > arquivo2.txt - Tudo mostrado pelo cat sera sobrescrito em arquivo2.txt.
+
 ">" -> para sobrescrever.
+
 ">>" -> para adicionar ao arquivo.
+
 "<" -> para sobrescrever esse arquivo com algo de outro arquivo.
+
 "<<" -> para adcionar à esse arquivo algo de outro arquivo.
+
 "2>" -> apra sobrescrever o arquivo com o erro do comando.
+
 "2>>" -> para adcionar ao arquivo o erro do comando.
+
 ### O que é o stdin, stdout, stderr?
 São como "canais" de comunicação.
 Exemplo: Quando você digita o comando "ls" vai para o stdin (0), o resultado de ls vai para o stdout (1) e se der erro vai para o stderr (2).
