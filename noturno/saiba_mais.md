@@ -596,20 +596,26 @@ Exemplo: cat arquivo.txt | grep a -> o grep vai agir no output do cat arquivo.tx
 Eles são:
 
 `cat`: Ele é utilizado para exibir o conteúdo de um arquivo no terminal e para concatenar dois ou mais arquivos em um só. 
+
 Ex: `cat notas.txt` para exibir ou `cat notas.txt notas2.txt > notasJuntas.txt`
 
 `less`: É utilizado para abrir o arquivo porém de forma interativa, melhor para arquivos longos que podem ocupar grande espaço no terminal. Em um arquivo aberto dessa maneira os comandos mais úteis são `/` para pesquisar dentro do arquivo, as setas do seu teclado para navegar por linha e `q` quando quiser sair. 
+
 Ex: `less log.txt`
 
 `grep`: É utilizado para vasculhar seus arquivos em busca do termo especificado. 
+
 Ex: como discutido acima, um comando como `grep b listaAlunos.txt` vai retornar todos os alunos que contenham "b" no nome, se escrevermos `grep "error" log.txt` teremos o retorno de toda vez que a palavra error ocorrer no nosso log.
 
 `wc`: Serve para contar o número de elementos dentro de seu arquivo.
+
 Ex: `wc redacao.txt` retorna o número de linhas, palavras e bytes do arquivo nessa ordem.
 
 `head`: Mostra as 10 primeiras linhas de um arquivo.
+
 Ex: `head arquivo.txt`
 
 `tail`: Mostra as 10 últimas linha de um arquivo.
+
 Ex: `tail arquivo.txt`
 
