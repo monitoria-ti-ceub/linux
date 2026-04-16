@@ -619,3 +619,10 @@ Ex: `head arquivo.txt`
 
 Ex: `tail arquivo.txt`
 
+`cut`: É usado para extrair partes especificas do seu arquivo.
+
+Ex: Em `cut -d ":" -f 1 /etc/passwd` você terá retorno da coluna de nomes de usuários da tabela encontrada no arquivo /etc/passwd (`-d` é o delimitador, ou seja, define qual o caractere separador, e -f define qual coluna você quer extrair)
+
+`sort`: Ele ordena as linhas do seu arquivo alfabeticamente ou numericamente.
+
+Ex: `sort arquivo.txt`
