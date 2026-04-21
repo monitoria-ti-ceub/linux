@@ -8,8 +8,17 @@ Apresentações utilizadas nas aulas.
 ### `aulas/`
 Materiais escritos de cada aula, com explicações para revisão, estudo complementar ou acompanhamento de quem não conseguiu comparecer.
 
+### `plano_de_ensino.md`
+Estrutura da oficina. Objetivos, metodologia e conteúdos programáticos.
+
+### `aividade.md`
+Atividades práticas propostas durante a oficina.
+
 ### `saiba_mais.md`
 Um arquivo com dúvidas comuns, aprofundamentos e explicações extras sobre os tópicos.
+
+### `distributions.md`
+Guia de distribuições de Linux.
 
 ## Recomendação
 Não se contente decorando comandos e conceitos, o objetivo não é apenas saber usar o sistema mas enxergar a lógica que conecta seus componentes e sustena seu funcionamento.
