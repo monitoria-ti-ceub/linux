@@ -111,43 +111,136 @@ A oficina será conduzida por meio de:
 - Shebang, permissões e execução;
 - Parâmetros, variáveis e fluxo básico em Bash.
 
-18. Estrutura Real do Linux
+18. Edição de Arquivos de Texto
+
+19. Estrutura do Linux
 - Hierarquia do sistema de arquivos;
 - Diretórios como `/bin`, `/usr`, `/etc`, `/lib`, `/boot`, `/dev`, `/proc`, `/sys`, `/run`, `/tmp`, `var`;
 - O que é essencial em um sistema funcional?
 - A diferença entre arquivos comuns, pseudoarquivos e device nodes.
 
-19. Executáveis, Bibliotecas e Configuração
+20. Usuários, Grupos e Permissões
+
+21. Montagem de Sistemas de Arquivos e Particionamento
+
+22. Executáveis, Bibliotecas e Configuração
 - O que é um binário?
 - O que é uma biblioteca compartilhada?
 - Dependências e linking;
 - Arquivos de configuração;
 - Programas, bibliotecas e arquivos em `/etc`.
 
-20. Boot e Inicialização do Sistema
+23. Boot e Inicialização do Sistema
 - Firmware, bootloader, kernel, initramfs e init;
 - `systemd`;
 - O que é o processo 1?
 - Alvos, unidades e serviços;
 - A sequência que leva o sistema até um ambiente utilizável.
 
-21. Serviços, Logs e Observabilidade
+24. Serviços, Logs e Observabilidade
 - O que são daemons e serviços?
 - Como inspecionar o estado do sistema;
 - Leitura de logs;
 - Uso de `systemctl` e `journalctl`;
 - Diagnóstico inicial de falhas.
 
-22. Processos, Sinais e Controle de Execução
+25. Processos, Sinais e Controle de Execução
 - Processos;
 - Foreground, background e jobs;
 - PID, processo pai e processo filho;
 - Sinais e encerramento;
 - Controle de execução e observação com `ps`, `top`, `jobs`, `kill` e afins.
 
-23. Software, Dependências, Pacotes e Laboratório em Máquina Virtual
+26. Software, Dependências, Pacotes e Laboratório em Máquina Virtual
 - Pacotes e repositórios;
 - Dependências e integração com a distro;
 - A diferença entre instalar, extrair e compilar;
 - Uso da máquina virtual como laboratório;
 - Ambiente para experimentação estrutural.
+
+### Ciclo III
+27. Compilação do Kernel Linux
+- Código-fonte;
+- Configuração do Kernel;
+- Selecionando drivers e módulos essenciais;
+- Compilação: `make`, `make modules`, `make modules_install`;
+- Instalação: `vmlinuz`, `System.map`, `/boot`;
+- Criando módulos compiláveis;
+- Debugging de problemas de compilação;
+- Otimização.
+
+28. Criação de um Sistema de Arquivos Raiz
+- Diretórios e binários essenciais
+- Dependências
+- Bibliotecas compartilhadas necessárias
+- Criação de device nodes com `mknod`
+- Configuração mínima: `/etc/passwd`, `/etc/group`, `/etc/hostname`, `/etc/fstab`;
+- Criação do arquivo de configuração do shell: `/etc/profile`, `.bashrc`
+- `chroot`
+- `tar`, `cpio`
+
+29. Bootloader e Inicialização Customizada
+- GRUB
+- Entradas de boot customizadas
+- Parâmetros de kernel
+- initramfs customizado
+- Scripts de inicialização
+- Ordem de boot
+- Troubleshooting de boot
+- U-Boot
+
+30. Integração de Ferramentas Essenciais
+- Compilando ferramentas: `busybox`
+- Compilando shells alternativos: `dash`, `zsh`
+- Compilando editores: `nano`, `vim`
+- Compilando ferramentas de rede: `iproute2`, `openssh`, `curl`, `wget`
+- Compilando ferramentas de sistema: `htop`, `tmux`, `screen`
+- Compilando ferramentas de desenvolvimento: `gcc`, `make`, `git`
+- Gerenciando dependências entre ferramentas
+- Otimização
+- Criando symlinks para compatibilidade
+
+31. Configuração de Rede e Serviços Básicos
+- Configuração de rede: interfaces, IP, DNS, gateway
+- Arquivos de configuração
+- Ferramentas de rede
+- DHCP vs. IP estático
+- Configuração de SSH
+- Firewall básico
+- Serviços essenciais
+- Sincronização de tempo
+- DNS local
+
+32. Gerenciamento de Pacotes Customizado
+- Escolhendo um gerenciador
+- Como organizar pacotes
+- Criando pacotes
+- Assinando pacotes
+- Repositório local
+- Configurando o gerenciador de pacotes na distribuição
+- Automatizando builds
+- Versionamento e dependências
+- Atualizações
+
+33. Otimização, Segurança e Finalização
+- Auditoria de segurança
+- Hardening
+- Otimização de performance
+- Redução de tamanho
+- Testes
+- Documentação
+- Instaladores
+- Imagens
+- Versionamento
+
+34. Distribuição e Deployment
+- Hospedando a distribuição
+- Criando checksums e assinaturas
+- Documentação
+- Comunidade
+- Feedback e iteração
+- Contribuições
+- Licença
+- Marketing
+- Sustentabilidade
+
