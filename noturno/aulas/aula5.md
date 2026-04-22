@@ -1,4 +1,4 @@
-16. Shell
+## **16. Shell**
 
 O shell não é apenas para digitar comandos, ele é o programa que interpreta o que escrevemos e organiza o ambiente no qual esses comandos serão executados. No dia a dia, tratamos o shell e o terminal como se fossem a mesma coisa, mas eles cumprem papéis diferentes. O terminal é a interface textual, o shell é o interpretador.
 
@@ -10,7 +10,7 @@ Muitos programas recebem entrada, produzem saída normal e também podem produzi
 
 Quando fazemos algo como `comando1 | comando2`, a saída do primeiro comando deixa de ir direto para a tela e passa a ser usada como entrada do segundo. Essa lógica permite construir operações mais sofisticadas sem precisar de uma ferramenta única que resolva tudo.
 
-17. Ferramentas de Texto e Scripts
+## **17. Ferramentas de Texto e Scripts**
 
 O Linux dá importância ao texto. Não quer dizer que o sistema "gosta de terminal". Quer dizer que o texto ocupa um lugar central na forma como o sistema é configurado, documentado, automatizado e inspecionado. Arquivos de configuração costumam ser texto. Logs costumam ser texto. Scripts são texto. Saídas de comando, em grande parte, são texto. Até muitas interfaces do próprio sistema se apresentam ao usuário de forma textual.
 
