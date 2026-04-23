@@ -626,3 +626,31 @@ Ex: Em `cut -d ":" -f 1 /etc/passwd` você terá retorno da coluna de nomes de u
 `sort`: Ele ordena as linhas do seu arquivo alfabeticamente ou numericamente.
 
 Ex: `sort arquivo.txt`
+
+### Quais as ferramentas de textos mais utilizadas?
+
+Nano e vi/vim são as mais utilizadas.
+
+### Qual ferramenta de texto é melhor?
+
+Depende, nano é simples e mais fácil de entender e utilizar no começo. O vi/vim/neovim são um pouco mais complexas mas quando aprende a usa-las são muito eficientes. Não existe uma melhor, depende do contexto e do usuário.
+
+### Quais as boas práticas do linux?
+
+Realize backups, utilize o visudo para o controle de permissões dos usuários, utilize a regra do menor privilégio, reinicie serviços e mantenha o linux sempre atualizado.
+
+### Como funciona uma VM (Virtual Machine)?
+
+É basicamente um computador virtualizado dentro de um computador físico, utilizando um software chamado hypervisor para ter a divisão do componentes do hardware.
+
+### Uma VM pode se considerada um Dual Boot
+
+Não, são coisas diferentes. A VM é um sistema dentro de outro, não precisa reiniciar um sistema para abrir o outro, o Dual Boot são sistemas separados, é necessário reiniciar um sistema para abrir o outro.
+
+### Qual VM é a melhor?
+
+Não existe uma melhor, a mais conhecida e utilizada é o Virtual Box, mas depende de cada usuário.
+
+### Para que utilizar uma VM?
+
+Muitas pessoas não se sentem confortáveis de fazer uma mudança do Sistema Operacional antigo direto pro Linux, o VM ajudará a começar a se familiarizar com os sistemas UNIX e ajudará a praticar o que está sendo desenvolvido em sala de aula. Além de possibilitar os testes de várias distribuições sem medo.
