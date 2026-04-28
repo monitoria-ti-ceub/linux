@@ -1,0 +1,10 @@
+- Como o kernel gerencia o buffer entre pipes?
+	Imagine o "|" como um cano fisico ligando os programas. O kernel do linux criar um buffer (uma área de memória temporária) para esse cano.
+	Quando o primeiro comando produz dados, o kernel os armazena nesse buffer até que o segundo programa esteja pronto para ler.
+	Se o buffer ficar cheio, o kernel coloca o primeiro comando em "pausa" até que o segundo programa consuma dados e abra um pouco de espaço.
+- Por que `sort|uniq` é mais eficiente que `uniq`?
+	Porque quando usamos o uniq sozinho, ele não consegue contar os mesmo erros. Para isso acontecer eles tem que ficar linhas próximas. Usando ele sozinho teremos: 1 Erro A, 1 Erro B, 1 Erro A
+	Quando usamos o sort | uniq, o sort junta esses erroas em linhas próximas. Usando dessa forma teremos: 2 Erro A, 1 Erro B
+- Como redirecionar stderr e stdout para arquivos diferentes?
+	Para stderr: comando 2> erros.txt
+	Para stdout: comando > sucessos.txt (1 implícito)
