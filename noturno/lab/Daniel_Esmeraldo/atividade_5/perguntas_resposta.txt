@@ -1,0 +1,10 @@
+- Qual editor é melhor para editar configs do sistema?
+	Depende da situação, se for uma edição muito rápida, usa o nano.
+	Agora se for uma edição complexa, que demora, usa o vim.
+- Como usar vim em modo não-interativo (via `sed`)?
+	Basta utiliza o sed -i 's/old/new/' nome_arquivo para alterar o arquivo original.
+- Por que `visudo` é importante?
+	É uma das ferramentas de segurança mais críticas do Linux.
+	Se você cometer um erro de digitação no arquivo de permissões usando um editor comum e salva, você pode perder o acesso ao root. O visudo verifica se há um erro de digitação antes de salva.
+	Ele também impede que duas pessoas editem as permissões ao mesmo tempo, evitando que uma sobrescreva a alteração da outra.
+	O visudo também garante que o arquivo mantenha as permissões de leiturea corretas, impedindo que usuários comuns vejam regras e privilégios.
