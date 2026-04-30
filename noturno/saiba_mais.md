@@ -665,11 +665,11 @@ Ao ligar o computador, primeiro o firmware é iniciado, que por sua vez inicia o
 
 Intramfs, ou Initial RAM Filestystem, é um sistema de arquivos temporário que é iniciado pelo kernel dentro da memória volátil (RAM) do sistema. Sua função é iniciar o sistema de arquivos real do sistema e os drivers essenciais para o funcionamento do sistema e o /init.
 
-## O que é /init?
+### O que é /init?
 
 Init é o primeiro processo (Ou PID 1) que é iniciado pelo sistema, ele é o responsável por iniciar todos os processos essenciais para o sistema funcionar corretamente e gerenciar o funcionamento do sistema através de alvos, unidades e serviços. Hoje em dia, uma grande parte das distribuições utiliza o systemd como o executável init padrão.
 
-## Quais são esses alvos, unidades e serviços?
+### Quais são esses alvos, unidades e serviços?
 
 Unidades são recursos em forma de arquivos que são gerenciados pelo init. Recursos como serviços de rede, pontos de montagem (mount), dispositivos de hardware, entre outros. Geralmente estão localizados em `/usr/lib/systemd/system/` ou `/etc/systemd/system/`.
 Alvos (`.target`) são agrupamentos de unidades que são usadas para definir o estado atual do sistema.
