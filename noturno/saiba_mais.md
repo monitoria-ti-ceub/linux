@@ -654,3 +654,23 @@ Não existe uma melhor, a mais conhecida e utilizada é o Virtual Box, mas depen
 ### Para que utilizar uma VM?
 
 Muitas pessoas não se sentem confortáveis de fazer uma mudança do Sistema Operacional antigo direto pro Linux, o VM ajudará a começar a se familiarizar com os sistemas UNIX e ajudará a praticar o que está sendo desenvolvido em sala de aula. Além de possibilitar os testes de várias distribuições sem medo.
+
+## Boot e inicialização do sistema
+
+### Qual é a ordem de inicialização quando eu uso o Linux?
+
+Ao ligar o computador, primeiro o firmware é iniciado, que por sua vez inicia o bootloader, que então inicia o kernel do SO. Após isso o kernel inicia o intramfs que então carrega os drivers do sistema e o executavel /init.
+
+### O que é o intramfs?
+
+Intramfs, ou Initial RAM Filestystem, é um sistema de arquivos temporário que é iniciado pelo kernel dentro da memória volátil (RAM) do sistema. Sua função é iniciar o sistema de arquivos real do sistema e os drivers essenciais para o funcionamento do sistema e o /init.
+
+## O que é /init?
+
+Init é o primeiro processo (Ou PID 1) que é iniciado pelo sistema, ele é o responsável por iniciar todos os processos essenciais para o sistema funcionar corretamente e gerenciar o funcionamento do sistema através de alvos, unidades e serviços. Hoje em dia, uma grande parte das distribuições utiliza o systemd como o executável init padrão.
+
+## Quais são esses alvos, unidades e serviços?
+
+Unidades são recursos em forma de arquivos que são gerenciados pelo init. Recursos como serviços de rede, pontos de montagem (mount), dispositivos de hardware, entre outros. Geralmente estão localizados em `/usr/lib/systemd/system/` ou `/etc/systemd/system/`.
+Alvos (`.target`) são agrupamentos de unidades que são usadas para definir o estado atual do sistema.
+Serviços são programas que rodam em segundo plano no SO. O systemd oferece a paralelização desses programas, melhorando o tempo de inicialização do sistema.
