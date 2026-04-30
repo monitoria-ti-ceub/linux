@@ -689,4 +689,20 @@ Daemon é o termo utilizado em Linux enquanto serviço é o termo utilizado no W
 
 Sim! Ele é um daemon que gerencia outros daemons.
 
+### Eu consigo controlar quais serviços eu quero ativos pelo systemd?
+
+Sim. Para isso você precisa utilizar o comando `systemctl`. Esse comando permite que você tenha imenso controle sobre os serviços da sua maquina, você pode ativar, desativar, reiniciar, ver o funcionamento, etc.
+
+### O que é um log?
+
+Log é como um registro de atividades de um sistema, aplicação ou rede. É uma das formas de verificar, monitor e controlar o funcionamento de um dado sistema. Quase todos os nossos sistemas computacionais do dia-a-dia possuem logs que pode ser obervados, desde nossos computadores até nossos celulares, carros, videogames e qualquer aparelho "smart".
+
+### Como possover os logs do meu sistema?
+
+Os logs do seu sistema Linux estão localizados na pasta `/var/log`.
+
+### Preciso de ajudar para interpretar um log!
+
+Usando o comando `journalctl` + o serviço que você quer ver o log é possível ver os logs gerados pelo systemd, contendo a data, hora, daemon, e atividade realizada.
+
 
