@@ -672,5 +672,21 @@ Init é o primeiro processo (Ou PID 1) que é iniciado pelo sistema, ele é o re
 ### Quais são esses alvos, unidades e serviços?
 
 Unidades são recursos em forma de arquivos que são gerenciados pelo init. Recursos como serviços de rede, pontos de montagem (mount), dispositivos de hardware, entre outros. Geralmente estão localizados em `/usr/lib/systemd/system/` ou `/etc/systemd/system/`.
+
 Alvos (`.target`) são agrupamentos de unidades que são usadas para definir o estado atual do sistema.
+
 Serviços são programas que rodam em segundo plano no SO. O systemd oferece a paralelização desses programas, melhorando o tempo de inicialização do sistema.
+
+## Serviços, Logs e Observabilidade
+
+### O que são daemons? Como eles se diferem de serviços?
+
+Daemons são os serviços que descrevemos acima, são programas que rodam em segundo plano SO que executam funções essenciais do sistema operacional, como gerenciar rede imprimir, gerenciar alguns serviços de porta (Como o SSH e http). Geralmente todo daemon é terminado com a letra d.
+
+Daemon é o termo utilizado em Linux enquanto serviço é o termo utilizado no Windows.
+
+### O systemd é um daemon?
+
+Sim! Ele é um daemon que gerencia outros daemons.
+
+
