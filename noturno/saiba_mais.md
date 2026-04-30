@@ -659,11 +659,11 @@ Muitas pessoas não se sentem confortáveis de fazer uma mudança do Sistema Ope
 
 ### Qual é a ordem de inicialização quando eu uso o Linux?
 
-Ao ligar o computador, primeiro o firmware é iniciado, que por sua vez inicia o bootloader, que então inicia o kernel do SO. Após isso o kernel inicia o intramfs que então carrega os drivers do sistema e o executavel /init.
+Ao ligar o computador, primeiro o firmware é iniciado, que por sua vez inicia o bootloader, que então inicia o kernel do SO. Após isso o kernel inicia o initramfs que então carrega os drivers do sistema e o executavel /init.
 
-### O que é o intramfs?
+### O que é o initramfs?
 
-Intramfs, ou Initial RAM Filestystem, é um sistema de arquivos temporário que é iniciado pelo kernel dentro da memória volátil (RAM) do sistema. Sua função é iniciar o sistema de arquivos real do sistema e os drivers essenciais para o funcionamento do sistema e o /init.
+Initramfs, ou Initial RAM Filestystem, é um sistema de arquivos temporário que é iniciado pelo kernel dentro da memória volátil (RAM) do sistema. Sua função é iniciar o sistema de arquivos real do sistema e os drivers essenciais para o funcionamento do sistema e o /init.
 
 ### O que é /init?
 
@@ -697,7 +697,7 @@ Sim. Para isso você precisa utilizar o comando `systemctl`. Esse comando permit
 
 Log é como um registro de atividades de um sistema, aplicação ou rede. É uma das formas de verificar, monitor e controlar o funcionamento de um dado sistema. Quase todos os nossos sistemas computacionais do dia-a-dia possuem logs que pode ser obervados, desde nossos computadores até nossos celulares, carros, videogames e qualquer aparelho "smart".
 
-### Como possover os logs do meu sistema?
+### Como posso ver os logs do meu sistema?
 
 Os logs do seu sistema Linux estão localizados na pasta `/var/log`.
 
