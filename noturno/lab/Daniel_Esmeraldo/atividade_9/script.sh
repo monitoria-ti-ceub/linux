@@ -15,14 +15,9 @@ adicionar_arquivo() {
         fi
 }
 
-listar_arquivos() {
-	ls -la
-        echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO listou os arquivos" >> log.txt
-}
-
 buscar_arquivo() {
         read -p "Informe o nome do arquivo a buscar: " nome_arquivo
-        resultado=$(find / -type f -name "$nome_arquivo" 2>/dev/null)
+        resultado=$(find . -type f -name "$nome_arquivo" 2>/dev/null)
 
         if [ -n "$resultado" ]; then
                 echo "$resultado"
@@ -47,19 +42,64 @@ deletar_arquivo() {
 	fi
 }
 
+adicionar_diretorio() {
+	read -p "Informe o nome do diretorio a adicionar: " nome_diretorio
+
+        if [ -d "$nome_diretorio" ]; then
+		echo "O diretório $nome_diretorio já existe no diretório."
+        else
+                mkdir "$nome_diretorio"
+                echo " $nome_diretorio criado com êxito."
+                echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO criou diretório $nome_diretorio" >> log.txt
+        fi
+}
+
+buscar_diretorio() {
+        read -p "Informe o nome do diretório a buscar: " nome_diretorio
+        resultado=$(find . -type d -name "$nome_diretorio" 2>/dev/null)
+
+        if [ -n "$resultado" ]; then
+                echo "$resultado"
+	else
+		echo "Diretório não encontrado."
+        fi
+
+        echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO procurou por diretório $nome_diretorio" >> log.txt
+}
+
+deletar_diretorio() {
+	read -p "Informe o nome do diretório a deletar: " nome_diretorio
+	if [ -d "$nome_diretorio" ]; then
+		echo "ATENÇÃO! TODOS OS ARQUIVOS DENTRO DE $nome_diretorio SERÃO DELETADOS"
+		read -p "Você realmente deseja deletar o diretório $nome_diretorio? (s/n): " confirm
+		if [ "$confirm" == "s" ]; then
+			rm -r "$nome_diretorio"
+                        echo "Diretório $nome_diretorio deletado."
+                        echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO removeu o diretório $nome_diretorio" >> log.txt
+		fi
+        else
+		 echo "Diretório não encontrado."
+	fi
+}
+
+listar() {
+	ls -la
+        echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO listou os arquivos/diretórios" >> log.txt
+}
+
 gerenciar_permissoes() {
-	read -p "Informe o nome do arquivo a gerenciar permissão: " nome_arquivo
-        read -p "Informe as permissões que o arquivo terá (Ex: 755): " permissoes
-	if [ -f "$nome_arquivo" ]; then
+	read -p "Informe o nome do arquivo/diretório a gerenciar permissão: " nome
+        read -p "Informe as permissões que o arquivo/diretório terá (Ex: 755): " permissoes
+	if [ -e "$nome" ]; then
 		if [[ "$permissoes" =~ ^[0-7]{3,4}$ ]]; then
-			chmod "$permissoes" "$nome_arquivo"
+			chmod "$permissoes" "$nome"
                         echo "Permissão alterada com êxito."
-                        echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO alterou a permissão do arquivo $nome_arquivo para $permissoes" >> log.txt
+                        echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO alterou a permissão do arquivo/diretório $nome para $permissoes" >> log.txt
                 else
                         echo "Formato inválido. Use 755, 644, etc."
                 fi
 	else
-		echo "Arquivo não encontrado."
+		echo "Arquivo/diretório não encontrado."
         fi
 }
 
@@ -82,11 +122,11 @@ gerenciar_proprietarios() {
 		if [ -n "$grupo" ]; then
 			chown "$dono:$grupo" "$nome"
 			echo "Proprietário alterado para $dono:$grupo"
-			echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO alterou proprietário de $nome para $dono:$grupo" >> log.txt
+			echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO alterou proprietário do arquivo/diretório $nome para $dono:$grupo" >> log.txt
 		else
 			chown "$dono" "$nome"
 			echo "Proprietário alterado para $dono"
-			echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO alterou proprietário de $nome para $dono" >> log.txt
+			echo "$(date '+%Y-%m-%d %H:%M:%S') - $USUARIO alterou proprietário do arquivo/diretório $nome para $dono" >> log.txt
 		fi
 	else
 		echo "Arquivo/diretório não encontrado."
@@ -119,33 +159,69 @@ sair() {
 
 while true; do
 	PS3="Escolha uma opção: "
-	select opcao in "Adicionar arquivo" "Listar arquivos" "Buscar arquivo" "Deletar arquivo" "Gerenciar permissões" "Gerenciar proprietários" "Gerar relatório" "Sair"; do
-        	case $opcao in
-                	"Adicionar arquivo")
-				adicionar_arquivo
-                        	;;
-                	"Listar arquivos")
-				listar_arquivos
-                        	;;
-                	"Buscar arquivo")
-				buscar_arquivo
-                        	;;
-                	"Deletar arquivo")
-				deletar_arquivo
-                        	;;
-                	"Gerenciar permissões")
+	select opcao in "Arquivo" "Diretório" "Listar" "Gerenciar permissões" "Gerenciar proprietários" "Gerar relatório" "Sair"; do
+		case $opcao in
+			"Arquivo")
+				PS3="Escolha uma opção: "
+				select opcao in "Adicionar arquivo" "Buscar arquivo" "Deletar arquivo" "Voltar"; do
+			        	case $opcao in
+			                	"Adicionar arquivo")
+							adicionar_arquivo
+			                        	;;
+			                	"Buscar arquivo")
+							buscar_arquivo
+			                        	;;
+			                	"Deletar arquivo")
+							deletar_arquivo
+			                        	;;
+						"Voltar")
+							break
+							;;
+			        	esac
+
+					break
+				done
+				;;
+			"Diretório")
+				PS3="Escolha uma opção: "
+				select opcao in "Adicionar diretório" "Buscar diretório" "Deletar diretório" "Voltar"; do
+			        	case $opcao in
+			                	"Adicionar diretório")
+							adicionar_diretorio
+			                        	;;
+			                	"Buscar diretório")
+							buscar_diretorio
+			                        	;;
+			                	"Deletar diretório")
+							deletar_diretorio
+			                        	;;
+						"Voltar")
+							break
+							;;
+			        	esac
+
+					break
+				done
+				;;
+			"Listar")
+				listar
+				;;
+			"Gerenciar permissões")
 				gerenciar_permissoes
-                        	;;
+				;;
 			"Gerenciar proprietários")
 				gerenciar_proprietarios
 				;;
-                	"Gerar relatório")
+			"Gerar relatório")
 				gerar_relatorio
-                        	;;
-                	"Sair")
+				;;
+			"Sair")
 				sair
-              	          	;;
-        	esac
+				;;
+			*)
+				echo "Opção inválida."
+				;;
+		esac
 
 		break
 	done
