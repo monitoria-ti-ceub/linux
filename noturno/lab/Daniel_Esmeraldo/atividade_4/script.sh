@@ -1,0 +1,28 @@
+#!/bin/bash
+
+cat > log.txt << EOF
+2025-01-15 08:23:45 [INFO] Usuário admin fez login
+2025-01-15 08:45:12 [ERROR] Falha de conexão com banco de dados
+2025-01-15 09:02:30 [ERROR] Timeout na requisição API
+2025-01-15 09:15:22 [INFO] Backup concluído
+2025-01-15 09:30:17 [WARN] Uso de CPU acima de 80%
+2025-01-15 09:45:08 [ERROR] Falha de conexão com banco de dados
+2025-01-15 10:00:01 [INFO] Usuário jose fez logout
+2025-01-15 10:22:44 [ERROR] Arquivo não encontrado: config.xml
+2025-01-15 10:45:33 [WARN] Pouco espaço em disco (15% livre)
+2025-01-15 11:05:19 [ERROR] Timeout na requisição API
+2025-01-15 11:30:02 [INFO] Relatório gerado com sucesso
+2025-01-15 11:55:48 [ERROR] Falha de conexão com banco de dados
+2025-01-15 12:20:15 [INFO] Usuário admin fez logout
+2025-01-15 12:45:33 [ERROR] Permission denied: /var/log/syslog
+2025-01-15 13:10:22 [WARN] Conexão lenta detectada
+2025-01-15 13:35:07 [ERROR] Timeout na requisição API
+2025-01-15 14:00:44 [INFO] Sincronização completa
+2025-01-15 14:25:16 [ERROR] Falha de conexão com banco de dados
+2025-01-15 14:50:39 [CRITICAL] Serviço web caiu
+2025-01-15 15:15:03 [INFO] Serviço web reiniciado
+EOF
+
+grep "ERROR" log.txt
+grep "ERROR" log.txt | cut -d' ' -f4- | sort | uniq -c
+grep "ERROR" log.txt | cut -d' ' -f4- | sort | uniq -c | sort -rn | head -5 > relatorio_erros.txt

@@ -1,0 +1,8 @@
+- Qual é a diferença entre `grep "padrão"` e `grep -E "padrão"`?
+	O grep padrão utiliza Expressões Regulares Básicas (BRE), nele símbolos especiais são lidos como texto normal, para utilizá-los é necessário colocar um "\" antes.
+	O grep -E ativa as Expressões Regulares Estendidas (ERE), nele símbolos especiais são lidos como símbolos espciais diretamente. É a forma recomendada para buscas complexas.
+- Como usar regex para encontrar e-mails?
+	Utilizar a estrutura do email: usuário + @ + provedor + ponto + extensão
+	Comando: grep "[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,} nome_arquivo
+- O que `grep -i` faz?
+	O -i vem de Ignore Case, isso faz com que ele ignore maiúsculas e minúsculas. Então grep -i "Rodrigo" retornaria, por exemplo: rodrigo, RODrigO, RODRIGO.

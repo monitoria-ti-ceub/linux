@@ -1,0 +1,30 @@
+#!/bin/bash
+
+cat > vendas.txt << EOF
+produto:preco:quantidade
+Roteador Cisco:1245:5
+Switch Gerenciável:857:10
+Cabo de Rede Cat6:453:2
+Servidor Dell:15321:1
+Firewall Fortigate:4512:2
+Conector RJ45:87:15
+Access Point:984:8
+Patch Panel:322:4
+Rack de Parede:559:3
+Nobreak 1500VA:1124:5
+Placa de Rede Gigabit:123:20
+Fibra Óptica:1847:1
+Transceiver SFP+:256:12
+Testador de Cabos:193:6
+Alicate de Crimpagem:78:10
+Organizador de Cabos:49:25
+Teclado Mecânico:352:7
+Monitor 24 Polegadas:899:12
+HD Externo 2TB:427:9
+Câmera IP:381:14
+EOF
+
+awk -F: 'NR>1 && $2 > 100 { print $1 "|" $2 "|" $3}' vendas.txt
+awk -F: 'NR>1 { print "Total:", $2 * $3 }' vendas.txt
+awk -F: 'NR>1 { total_geral += $2 * $3 } END { print "Total Geral:", total_geral }' vendas.txt
+awk -F: 'NR>1 { contador ++ } END { print "Produtos:", contador }' vendas.txt

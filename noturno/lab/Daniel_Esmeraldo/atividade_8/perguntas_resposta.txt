@@ -1,0 +1,12 @@
+- Qual é a diferença entre ext4, btrfs e xfs?
+	Esses são formatos diferentes para organizar dados no disco:
+		ect4: É o padrão do Linux. É extremamente estável, confiável e compatível com quase tudo. É a escolha segura para a maioria dos usuários domésticos.
+		xfs: Focado em performance e estabilidade. Lida muito com arquivos gigantes e grande volume de dados. Ele é o padrão em distribuições mepresariais como o Red Hat.
+		btrfs: Ele é o sistema "moderno". Ele traz varias funções como snapshots, compressão de dados nativa e suporte fácil a RAID.
+- Como funciona um loop device?
+		Um loop device é um arquivo virtual que permite você a montar ele como se fosse um disco rígido.
+		Você criar um arquivo vazio com o dd, formata ele com o mkfs.ext4 e "engana" o sistema para que ele trate esse arquivo como uma partição real.
+- O que é /etc/fstab e por que é importante?
+		O fstab é um arquivo que contem todos as partições que o Linux deve montar automaticamente durante a inicialização.
+		Sem ele, toda vez que você ligasse o computador, teria que digitar comandos manualmente para acessar seus arquivos ou seu disco de backup.
+		RISCO: um erro de digitação nesse arquivo pode fazer o Linux parar de iniciar, pois ele vai tentar montar um arquivo que não existe e travar no processo.

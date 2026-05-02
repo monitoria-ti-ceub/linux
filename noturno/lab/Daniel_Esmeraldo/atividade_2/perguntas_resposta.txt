@@ -1,0 +1,7 @@
+- Por que usar `sed` em vez de editar o arquivo manualmente?
+	O sed permite automação, imagina ter que alterar o IP de 1000 servidores diferente manualmente, demoraria muito tempo. O sed permite automatizar isso.
+- Qual é a diferença entre `sed 's/old/new/'` e `sed 's/old/new/g'`?
+	Sem o g, o sed altera apenas a primeira ocorrência da palavra em cada linha.
+	Com o g (global), o sed altera todas as ocorrências da palavra em cada linha.
+- Como usar `sed` para fazer backup antes de modificar?
+	Usar o sed -i.bak 's/old/new/' nome_arquivo, esse comando altera o arquivo original e cria um backup do mesmo: nome_arquivo.bak
