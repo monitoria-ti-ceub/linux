@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8">
+    <title>Software e Pacotes</title>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Reveal.js -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js/dist/theme/black.css">
+
+    <style>
+        .reveal h2 { color: #00c8ff; }
+        .reveal p, .reveal li { font-size: 26px; }
+        .curiosidade {
+            color: #00ff88;
+            font-size: 22px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="reveal">
+<div class="slides">
+
+    <!-- CAPA -->
+    <section>
+        <h2>Software, Dependências,<br>Pacotes e VM</h2>
+        <p style="color:#aaa;">Fundamentos de sistemas Linux</p>
+    </section>
+
+    <!-- PACOTES -->
+    <section>
+        <h2>Pacotes e Repositórios</h2>
+        <p>
+            Pacotes são arquivos que contêm programas já prontos para instalação.
+            Repositórios são servidores onde esses pacotes ficam armazenados.
+        </p>
+        <p>
+            Eles permitem instalar software de forma rápida e segura usando gerenciadores como apt, pacman ou dnf.
+        </p>
+        <p class="curiosidade">
+            💡 Curiosidade: O Arch Linux usa o "pacman", um dos gerenciadores mais rápidos e simples.
+        </p>
+    </section>
+
+    <!-- DEPENDÊNCIAS -->
+    <section>
+        <h2>Dependências e Integração</h2>
+        <p>
+            Dependências são bibliotecas ou outros programas que um software precisa para funcionar.
+        </p>
+        <p>
+            A integração com a distro garante que tudo funcione corretamente dentro do sistema.
+        </p>
+        <p class="curiosidade">
+            💡 Curiosidade: O famoso "dependency hell" acontece quando versões entram em conflito.
+        </p>
+    </section>
+
+    <!-- INSTALAR VS EXTRAIR VS COMPILAR -->
+    <section>
+        <h2>Instalar vs Extrair vs Compilar</h2>
+        <ul>
+            <li><b>Instalar:</b> usar o gerenciador de pacotes (mais fácil)</li>
+            <li><b>Extrair:</b> apenas descompactar arquivos</li>
+            <li><b>Compilar:</b> transformar código-fonte em programa executável</li>
+        </ul>
+        <p class="curiosidade">
+            💡 Curiosidade: Compilar pode gerar programas mais otimizados para seu hardware.
+        </p>
+    </section>
+
+    <!-- VM -->
+    <section>
+        <h2>Máquina Virtual como Laboratório</h2>
+        <p>
+            Uma máquina virtual permite rodar outro sistema dentro do seu computador.
+        </p>
+        <p>
+            Ideal para testes sem risco de quebrar o sistema principal.
+        </p>
+        <p class="curiosidade">
+            💡 Curiosidade: Você pode rodar Linux dentro do Windows e vice-versa.
+        </p>
+    </section>
+
+    <!-- EXPERIMENTAÇÃO -->
+    <section>
+        <h2>Ambiente de Experimentação</h2>
+        <p>
+            Um ambiente controlado permite testar comandos, instalar pacotes e aprender sem medo.
+        </p>
+        <p>
+            Muito usado por desenvolvedores e administradores de sistemas.
+        </p>
+        <p class="curiosidade">
+            💡 Curiosidade: Muitos bugs famosos foram descobertos em ambientes de teste antes de irem pra produção.
+        </p>
+    </section>
+
+    <!-- FINAL -->
+    <section>
+        <h2>Conclusão</h2>
+        <p>
+            Entender esses conceitos é essencial para dominar Linux e ambientes de desenvolvimento.
+        </p>
+    </section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js/dist/reveal.js"></script>
+<script>
+    Reveal.initialize({
+        hash: true,
+        slideNumber: true,
+        transition: 'fade'
+    });
+</script>
+
+</body>
+</html>
