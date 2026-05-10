@@ -1,0 +1,18 @@
+2026-05-06 14:31:15 ERROR Arquivo não encontrado - sistema de criptografia muito forte
+2026-05-06 14:35:00 ERROR HACKER ENTRANDO EM ESTADO DE CHOQUE
+2026-05-06 14:36:00 ERROR 'VINTE ANOS!!! VINTE ANOS DA MINHA VIDA LENDO ESSA BOSTA!!!'
+2026-05-06 14:39:30 ERROR Comando bloqueado - FBI já assumiu controle remoto do servidor
+2026-05-06 14:47:30 ERROR Prisioneiro: 'MAS NÃO EXISTE TESOURO! SÃO AMIGOS!'
+2026-05-06 14:51:00 ERROR Prisioneiro: 'MAS NADA! NADA! APENAS AMIGOS!'
+2026-05-06 14:56:00 ERROR Nota do interrogador: 'Nunca vi alguém tão traumatizado por um mangá'
+     22 INFO
+     18 CRITICAL
+     14 DEBUG
+      8 ALERT
+      7 ERROR
+      4 WARN
+      1 'VINTE ANOS!!! VINTE ANOS DA MINHA VIDA LENDO ESSA BOSTA!!!'
+      1 Prisioneiro: 'MAS NÃO EXISTE TESOURO! SÃO AMIGOS!'
+      1 Prisioneiro: 'MAS NADA! NADA! APENAS AMIGOS!'
+      1 Nota do interrogador: 'Nunca vi alguém tão traumatizado por um mangá'
+      1 HACKER ENTRANDO EM ESTADO DE CHOQUE

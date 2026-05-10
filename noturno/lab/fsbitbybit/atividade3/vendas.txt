@@ -1,0 +1,16 @@
+produto:preco:quantidade
+monitor:800:12
+webcam:120:8
+headset:250:15
+SSD_500GB:400:7
+RAM_16GB:350:10
+fonte_750W:450:5
+gabinete:600:3
+mousepad:45:25
+hub_USB:80:18
+cabo_HDMI:35:22
+ventilador:90:14
+pasta_termica:25:30
+suporte_notebook:65:11
+carregador_rapido:180:9
+cabo_tipo_c:40:28
