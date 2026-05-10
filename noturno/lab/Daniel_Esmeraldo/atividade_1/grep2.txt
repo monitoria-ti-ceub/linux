@@ -1,0 +1,10 @@
+Bruno Costa, trinta e dois, bruno.c@yahoo.com
+Daniela Lima, vinte e sete, dani.lima@gmail.com
+Fernanda Alves, quarenta, fe.alves@outlook.com
+Helena Porto, dezoito, h.porto@yahoo.com
+Juliana Farias, vinte e nove, ju.farias@gmail.com
+Larissa Gomes, trinta e cinco, lari.gomes@outlook.com
+Natália Reis, quarenta e dois, naty.reis@yahoo.com
+Patrícia Belo, vinte e quatro, patri.belo@gmail.com
+Sabrina Leite, trinta e um, sabrina.l@outlook.com
+Vanessa Meira, dezenove, vanessa.m@yahoo.com

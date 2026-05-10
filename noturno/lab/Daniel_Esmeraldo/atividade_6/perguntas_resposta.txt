@@ -1,0 +1,23 @@
+- Qual é a diferença entre permissões de arquivo e permissões de diretório?
+	Os símbolos são iguais, mas o significado muda.
+	Permissões de Arquivo:
+		r: Permite ler o conteúdo do arquivo.
+		w: Permite alterar o conteúdo do arquivo.
+		x: Permite executar o conteúdo do arquivo.
+	Permissões de diretório:
+		r: Permite listar os arquivos do diretório.
+		w: Permite adicionar ou remover arquivos no diretório.
+		x: Permite acessar o diretório.
+- O que é setuid, setgid e sticky bit?
+	São permissões especiais para casos específicos:
+		setuid (4): Quando aplicado a um arquivo executável, ele executa com as permissões do dono do arquivo.
+		setgid (2): Em arquivos, roda com permissões do grupo dono. Em diretórios, fazem com que os novos arquivos criados alí herdem o grupo da pasta pai.
+		sticky bit (1): Usado em pastas públicas (como /tmp). Garante que apenas o dono do arquivo possa deletá-lo, mesmo que outros usuários tenham acesso de escrita.
+- Como o umask afeta as permissões padrão?
+	O umask (user mask) é um "filtro" que retira permissões no momento da criação de um arquivo.
+	Se o seu umask for 022 e o sistema tentar criar permissões 666 para arquivos e 777 para diretórios:
+		Arquivo: 666 - 022 = 644 (Dono Lê e escreve, o resto só lê).
+		Diretório: 777 - 022 = 755 (Dono faz tudo, o resto lê e entra).
+- Por que não usar 777 em produção?
+	Usar 777 para um projeto em grupo é um grande erro de segurança. Qualquer usuário teria como deletar/modificar arquivos.
+	Utilizando dessa forma, facilitaria para um invasor fazer o que quisesse, como injetar códigos maliciosos.

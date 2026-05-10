@@ -1,0 +1,4 @@
+      4 Falha de conexão com banco de dados
+      3 Timeout na requisição API
+      1 Permission denied: /var/log/syslog
+      1 Arquivo não encontrado: config.xml

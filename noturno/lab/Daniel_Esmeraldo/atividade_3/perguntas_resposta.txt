@@ -1,0 +1,9 @@
+- Por que usar `awk` em vez de `cut` ou `grep`?
+	O grep é bom em achar linhas inteiras, mas não lida bem com colunas.
+	O cut é bom pra separar colunas simples, mas é limitidado. Não consegue usar a lógica.
+	Já o awk é uma ferramenta de análise de dados completa. Ele lida muito bem com colunas, sabe fazer operações e usar a lógica. Além de formatar o texto de saída de uma forma mais bonita.
+- Como usar `awk` para processar arquivos CSV?
+	É só utilizar o parâmetro -F (Field Separator) com uma "," ou ";" ou "|".
+- Qual é a diferença entre `awk` e `sed`?
+	O sed (Stream Editor) é focado em edição e transformação. É ótimo para substituir palavras, deletar linhas ou inserir texto em posições específicas.
+	O awk é focado em extração e processamento de dados. É o melhor para gerar relatórios, somar valores e trabalhar com tabelas e colunas.

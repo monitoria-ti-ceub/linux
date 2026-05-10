@@ -1,0 +1,10 @@
+SERVIDOR=localhost
+# Configurações do Banco de Dados
+BANCO=producao
+# Porta de acesso
+PORTA=8080
+TIMEOUT=30
+# Modo de debug
+DEBUG=false
+# Limite de conexões
+MAX_CONN=100
