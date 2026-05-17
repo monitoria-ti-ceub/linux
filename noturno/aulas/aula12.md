@@ -42,3 +42,34 @@ Com o `.config` pronto, precisamos traduzir o código C em código de máquina.
 # nproc retorn o número de threads da sua CPU
 make -j$(nproc)
 ```
+
+O sistema de build (kbuild) lerá seu `.config`, entrará em cada pasta relevante (`arch/`, `drivers/`, `fs/`), executará o compilador GCC (ou Clang) em milhares de arquivos `.c` e chamará o linker (`Id`) para juntar tudo.
+
+Se a compilação terminar sem erros, você terá gerado dois artefatos:
+
+1. A Imagem do Kernel (`arch/x86/boot/bzImage`): É o kernel em si. O "b" significa big e o "z" significa zlib/Izma (compactado). O kernel se descompacta sozinho na RAM durante o boot.
+
+2. Os Módulos: Milhares de arquivos `.ko` que você marcou como `m` na configuração.
+
+Há também, o arquivo `System.map`, que é um dicionário que mapeia os nomes das funções do kernel para endereços de memória física. É inútil para o boot, mas crucial se o kernel travar (Kernel Panic) e você precisar debugar o erro.
+
+Em um sistema Linux (como Ubuntu), você executaria `sudo make modules_install` e `sudo make install`. O primeiro copiaria os `.ko` para `/lib/modules/` e o segundo copiaria o `bzImage` para `/boot/vmlinuz`, atualizando o GRUB automaticamente.
+
+Mas! Nós estamos construindo uma distribuição do zero. Não queremos instalar o kernel no sistema hospedeiro, queremos prepará-lo para o nosso novo sistema.
+
+O que faremos é copiar manualmente esses artefatos para um diretório de trabalho (um "staging area" ou "sysroot") que se tornará a raiz (`/`) da nossa nova distribuição.
+
+```bash
+# fluxo de trabalho para distro-builders
+export DISTRO_ROOT="/mnt/new_distro"
+mkdir -p $DISTRO_ROOT/boot
+
+# copia a imagem do kernel
+cp arch /x86/boot/bzImage
+<LaTex>$DISTRO_ROOT/boot/vmlinuz-custom
+
+# instala os módulos, apontando para a raiz da nova distribuição
+make INSTALL_MOD_PATH=$</
+LaTex>DISTRO_ROOT modules_install
+```
+
