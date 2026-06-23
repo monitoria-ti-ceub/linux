@@ -69,7 +69,7 @@ Este é o arquivo mais simples. Ele contém apenas o nome curto da máquina, sem
 
 **Configuração:**
 ```bash
-echo "manus-lfs" > /etc/hostname
+echo "my-distro" > /etc/hostname
 ```
 
 *   O nome deve ser simples e sem espaços.
