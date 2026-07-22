@@ -4,9 +4,9 @@ A oficina é dividida em três ciclos. Do básico até o avançado. No final de 
 
 ## Os Ciclos
 
-**1. Essentials:** Entender o que é um sistema operacional, se orientar dentro dele e operar com autonomia. Navegar, criar, mover, permissionar, instalar, montar, virtualizar.
-**2. Core:** Dominar o funcionamento interno do sistema. Ler, editar, automatizar, diagnosticar, controlar processos, entender o boot, administrar serviços e dependências.
-**3. Advanced:** Construir. Compilar um kernel, montar um filesystem, configurar boot, integrar ferramentas, levantar rede, criar um gerenciador de pacotes, endurecer o sistema e distribuir.
+- **1. Essentials:** Entender o que é um sistema operacional, se orientar dentro dele e operar com autonomia. Navegar, criar, mover, permissionar, instalar, montar, virtualizar.
+- **2. Core:** Dominar o funcionamento interno do sistema. Ler, editar, automatizar, diagnosticar, controlar processos, entender o boot, administrar serviços e dependências.
+- **3. Advanced:** Construir. Compilar um kernel, montar um filesystem, configurar boot, integrar ferramentas, levantar rede, criar um gerenciador de pacotes, endurecer o sistema e distribuir.
 
 ## Organização do Repositório
 
