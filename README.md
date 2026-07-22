@@ -1,24 +1,46 @@
 # Oficina de Linux
 
+A oficina é dividida em três ciclos. Do básico até o avançado. No final de tudo, vocês vão ter construído uma distribuição Linux do zero.
+
+## Os Ciclos
+
+**1. Essentials:** Entender o que é um sistema operacional, se orientar dentro dele e operar com autonomia. Navegar, criar, mover, permissionar, instalar, montar, virtualizar.
+**2. Core:** Dominar o funcionamento interno do sistema. Ler, editar, automatizar, diagnosticar, controlar processos, entender o boot, administrar serviços e dependências.
+**3. Advanced:** Construir. Compilar um kernel, montar um filesystem, configurar boot, integrar ferramentas, levantar rede, criar um gerenciador de pacotes, endurecer o sistema e distribuir.
+
 ## Organização do Repositório
 
-### `slides/`
-Apresentações utilizadas nas aulas.
-
-### `aulas/`
-Materiais escritos de cada aula, com explicações para revisão, estudo complementar ou acompanhamento de quem não conseguiu comparecer.
-
-### `plano_de_ensino.md`
-Estrutura da oficina. Objetivos, metodologia e conteúdos programáticos.
-
-### `aividade.md`
-Atividades práticas propostas durante a oficina.
-
-### `saiba_mais.md`
-Um arquivo com dúvidas comuns, aprofundamentos e explicações extras sobre os tópicos.
-
-### `distributions.md`
-Guia de distribuições de Linux.
+```
+noturno/
+├── 01-essentials/          Ciclo I
+│   ├── aulas/              Material escrito de cada tópico
+│   ├── slides/             Apresentações utilizadas nas aulas
+│   ├── labs/               Atividades práticas
+│   ├── resources/          Materiais de apoio
+│   ├── plano.md            Plano de ensino
+│   └── saiba_mais.md       Dúvidas comuns e aprofundamentos
+│
+├── 02-core/                Ciclo II
+│   ├── aulas/
+│   ├── slides/
+│   ├── labs/
+│   ├── resources/
+│   ├── plano.md
+│   └── saiba_mais.md
+│
+├── 03-advanced/            Ciclo III
+│   ├── aulas/
+│   ├── slides/
+│   ├── labs/
+│   ├── resources/
+│   ├── plano.md
+│   ├── saiba_mais.md
+│   └── decisions.md        As decisões técnicas do Ciclo III
+│
+└── docs/
+    ├── README.md
+    └── distributions.md    Guia de distribuições Linux
+```
 
 ## Recomendação
 Não se contente decorando comandos e conceitos, o objetivo não é apenas saber usar o sistema mas enxergar a lógica que conecta seus componentes e sustena seu funcionamento.
