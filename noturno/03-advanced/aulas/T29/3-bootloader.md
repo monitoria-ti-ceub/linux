@@ -2,17 +2,20 @@
 
 Nós temos o Kernel  (`bzImage`). Nós temos o Root Filesystem (pasta da distribuição). Eles são arquivos jogados em uma pasta do seu computador. Se você colocar esses arquivos em um pen-drive e colocar em um computador, nada vai acontecer. O computador não sabe o que fazer com eles.
 
+
 **Sequência de Boot:**
 1. Energia: A eletricidade flui da fonte para a Placa-Mãe
 2. BIOS/UEFI: Um chip de memória na Placa-Mãe (ROM) acorda. Ele contém um programa primitivo (BIOS/UEFI). A BIOS faz o POST (Power-On Self Test) para ver se a memória RAM e a CPU estão vivas.
 3. Buscar o Bootloader:A BIOS é boba. Ela não entende o que é um Kernel Linux ou um Windows. Ela só sabe fazer uma coisa: procurar o primeiro setor do primeiro disco rígido ou pen-drive, ler os primeiros 512 bytes de dados (MBR - Master Boot Record) e executar o que estiver lá.
 4. Bootloader: Nesses 512 bytes, instalamos um programa chamado Bootloader (GRUB). O trabalho do Bootloader é entender o sistema de arquivos do disco, achar o arquivo `bzImage`, copiar ele do disco para a memória RAM e dizer: "YOOOO CPU!!!! O Kernel tá na RAM, executa ele."
 5. Kernel: O Kernel assume o controle absoluto, ele detecta os mouses, teclados, placas de rede.
-6. RootFS: O Kernel precisa da pasta `/sbin/init` para passar o controle para o usuário. Esta pasta está no disco rígido.
+6. RootFS: O Kernel precisa da pasta `/sbin/init` para passar o controle para o usuário.
 
-...
+O GRUB é a ponte entre o firmware bobo e o Kernel inteligente. Sem ele, o firmware não sabe onde o Kernel está, logo, o Kernel nunca "acorda".
 
-Tá no disco rídigo. O Kernel precisa do driver SATA (`ahci.ko`) ou do driver USB (`usb-storage.ko`) para ler o disco rígido. Eles tão dentro da pasta `/lib/modules/`
+Olhem a etapa 6: "O kernel precisa da pasta `/sbin/init` para passar o controle pro espaço de usuário."
+
+Esse `/sbin/init` tá no disco rídigo. O Kernel precisa do driver SATA (`ahci.ko`) ou do driver USB (`usb-storage.ko`) para ler o disco rígido. Eles tão dentro da pasta `/lib/modules/`
 ... que tá dentro do disco rídigo.
 
 É o paradoxo do ovo e da galinha. Mas! A solução para esse paradoxo é a invenção mais engenhosa do processo de boot do Linux: Initramfs (Initial RAM Filesystem).
@@ -24,6 +27,35 @@ O Initramfs é um Root Filesystem minúsculo, temporário e descartável. Ele co
 Em vez de ser gravado no disco rídigo, o Initramfs é compactado em um arquivo `.cpio.gz`.
 Quando o Bootloader (GRUB) copia o Kernel para a RAM, ele também copia o arquivo do Initramfs para a RAM.
 
+O fluxo:
+
+1. Kernel acorda na RAM.
+2. Kernel vê o Initramfs na RAM.
+3. Kernel descompacta o cpio direto na memória, criando um filesystem virtual (ramfs).
+4. Kernel executa `/init` de dentro da RAM.
+5. O script `/init` (usando BusyBox) carrega os módulos `.ko` (também na RAM).
+6. Kernel sabe ler o disco de verdade.
+7. O script monta o disco real numa pasta temporária.
+8. `switch_root`: joga o Initramfs fora da RAM, transofrma o disco de verdade na nova raiz `/`.
+
+Nós compilamos o kernel com `defconfig`, que embute os drivers de disco (virtio, AHCI) e o driver de ext4 diretamente no kernel. Então, o paradoxo não existe no nosso caso, o kernel já sabe ler o disco sem precisar de módulos externos. Então.. não precisa de initramfs para bootar do disco virtual! O kernel monta `/dev/sda1` direto.
+
+## BIOS
+
+A BIOS é limitada:
+
+1. Faz o POST.
+2. Procura um dispositivo de boot (disco, pen-drive).
+3. Lê os primeiros 512 bytes do disco (MBR - Master Boot Record).
+4. Carrega esses 512 bytes pro endereço de memória `0x7C00` e executa.
+
+O problema central é que dos 512 bytes, 64 são reservados pra tabela de partições. Sobram 446 bytes de código executável. Então, não cabe um programa que entende ext4, navega por diretórios e acha um arquivo `vmlinuz` espalhado pelo disco.
+
+O GRUB resolve este problema através de uma arquitetura de múltiplos estágios (Multi-stage Bootloader):
+
+- **Estágio 1 (`boot.img`):** Este é o código minúsculo de 446 bytes que o instalador do GRUB grava no MBR. A sua única função é localizar e carregar o próximo estágio. Ele não entende sistemas de arquivos, ele carrega setores brutos do disco baseados em endereços físicos (LBA - Logical Block Addressing) gravados nele (hardcoded) durante a instalação.
+- **Estágio 1.5 (`core.img`):** Este estágio é gravado no "espaço não alocado" (MBR gap) que existe entre o MBR (setor 0) e o início da primeira partição (setor 2048.. usually). Este espaço tem cerca de 1 MB, o que é o suficiente para conter drivers mínimos de sistema de arquivos (ex.: um driver `ext4` minúsculo).
+- **Estágio 2 (`/boot/grub/`):** O Estágio 1.5, capaz de ler o sistema de arquivos, navega até a partição `/boot`, lê os arquivos de configuração `
 
 
 
@@ -47,7 +79,7 @@ O QEMU nomeou o CD-ROM virtual de um jeito diferente? Para debugar, altere o scr
 - Uma ISO normal não é projetada para rodar um sistema operacional inteiro de forma rápida. O SquashFS tem duas vantagens:
 Compressão. O Kernel descompacta os blocos do SquashFS diretamente e na memória RAM em tempo real. Ler dados descompactados da RAM é 1000 vezes mais rápido do que ler arquivos soltos de um pen-drive.
 OverlayFS. Como o SquashFS é imutável, usaremos o OverlayFS para colocar uma camada de RAM transparente por cima dele. Você poderá instalar programas e modificar arquivos com o sistema rodando. Se fossem arquivos soltos na ISO (que é Read-Only por natureza), o sistema daria erro ao tentar criar um simples arquivo de log.
-
+:
 4. O que é o parâmetro `quiet` na linha do Kernel no GRUB?
 
 - O Kernel é tagarela. Durante o boot, ele imprime centenas de linhas de log técnico sobre cada chip de hardware que ele encontra. A flag `quiet` diz ao Kernel: Lil'bro, só mostre mensagens se houver um erro fatal. Deixa o boot mais limpo visualmente, que nem o boot do Windows ou do macOS que escondem o texto atrás da logo. Se o sistema não estiver ligando, a primeira coisa a fazer é tirar o `quiet` do `grub.cfg` para ver onde o Kernel está travando.
