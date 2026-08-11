@@ -15,7 +15,7 @@ tar -xvf linux-6.1.70.tar.xz
 cd linux-6.1.70
 ```
 
-A escolha da versão é crítica. O ciclo de desenvolvimento do kernel adota um modelo de lançamentos frequentes. As versões "Mainline" representam o estado do desenvolvimento com os recursos mais recentes mas com um risco inerente de instabilidade.
+A escolha da versão é crítica. O ciclo de desenvolvimento do kernel adota um modelo de lançamentos frequentes. As versões "Mainline" representam o estado do desenvolvimento com os recursos mais recentes mas com um risco inerente de instabilidade [[#6. Quais são os riscos de instabilidade ao não escolher uma versão LTS do kernel?]].
 Para a construição de uma distribuição estável, a recomendação é usar uma versão LTS (Long Term Support). As versões LTS são selecionadas anualmente e recebem backports de correções de segurança e bugs críticos por um período que varia de dois a seis anos, providenciando uma base sólida e previsível para o sistema operacional.
 
 ### Anatomia do Código
@@ -84,27 +84,27 @@ Ao contrário dos drivers de placas de rede (que estão em `drivers/net/` e lida
 
 ## FAQ
 
-1. O meu Kernel demorou 2 horas para compilar, o do meu colega demorou 15 minutos.. POR QUE?
+### 1. O meu Kernel demorou 2 horas para compilar, o do meu colega demorou 15 minutos.. POR QUE?
 
 - A compilação é um processo CPU-Bound (limitado pelo processador) e I/O-Bound (limitado pela velocidade do disco). Se o seu colega tem um processador de 16 núcleos e usou `make -j16`, o trabalho foi dividido em 16 paralelos. Se você tem um processador de 2 núcleos e usou `make-j2`, você tem 8 vezes menos força de trabalho. Além disso, se o colega tem um SSD NVMe e você tem um HDD magnético, a leitura/escrita dos milhões de arquivos gerados atrasa o processo.
 
-2. O que vai acontecer se eu errar no `menuconfig` e esquecer de marcar o supporte para USB como `Y`?
+### 2. O que vai acontecer se eu errar no `menuconfig` e esquecer de marcar o supporte para USB como `Y`?
 
 O PC não vai explodir. O processo de compilação vai terminar com sucesso e você terá um `bzImage` perfeito. O problema vai estar no Tópico 29, quando você tentar dar boot na sua ISO. O Kernel vai ligar mas como ele não sabe o que é uma porta USB, ele não vai conseguir ler o pen-drive onde o resto do sistema operacional está gravado. Ele vai parar na tela preta com um erro.. `Kernel panic - not syncing: VFS: Unable to mount root fs on unknown-block(0,0)`. A solução é voltar no `menuconfig`, arrumar a opção e compilar de novo.
 
-3. Um guri na internet compilou o Kernel usando `make bzImage`. Nós usamos `make`. Qual é a diferença?
+### 3. Um guri na internet compilou o Kernel usando `make bzImage`. Nós usamos `make`. Qual é a diferença?
 
 Antes do Kernel 2.6, o comando `make` compilava a base (apenas) e você precisava digitar `make bzImage` para gerar o arquivo compactado, `make modules` para gerar os arquivos `.ko`. Nos Kernels modernos, os desenvolvedores unificaram tudo. Digitar apenas `make` ou `make -j($nproc)` é um atalho que diz ao sistema de build: "Faz tudo. Gera o bzImage e compile os módulos". O resultado é idêntico.
 
-4. `vmlinux` é a mesma coisa que `vmlinuz`?
+### 4. `vmlinux` é a mesma coisa que `vmlinuz`?
 
 Não! O `vmlinux` é o Kernel bruto, descomprimido e cheio de Símbolos de Debug (informações inúteis para o boot mas úteis para encontrar erros no código). Ele é gigante e nunca usamos ele para dar boot no computador. O sistema de build pega essa monstruosidade, limpa os símbolos inúteis, compacta com um algoritmo de compressão pesada e gera o `bzImage` (que será renomeado para `vmlinuz`.
 
-5. Por que não podemos baixar o arquivo `bzImage` pronto em vez de compilar?
+### 5. Por que não podemos baixar o arquivo `bzImage` pronto em vez de compilar?
 
 A essência é o controle arquitetural. Se você baixa um binário pronto, você é refém das escolhas de quem compilou. Quem garante que o criador ativou o suporte pro OverlayFS que precisamos? Quem garante que ele não colocou um módulo malicioso de backdoor? Compilar o código-fonte é ter soberania sobre o que entra e o que não entra no nosso sistema operacional. É a diferença entre comprar um carro pronto e construir o motor peça por peça.
 
-6. Quais são os riscos de instabilidade ao não escolher uma versão LTS do kernel?
+### 6. Quais são os riscos de instabilidade ao não escolher uma versão LTS do kernel?
 
 - Bugs em drivers que causam kernel panic
 Um driver de dispositivo recebeu código novo na versão mainline que ainda não foi testado em todas as combinações de hardware. No seu hardware específico, esse código novo causa um acesso inválido à memória. O kernel detecta que algo catastrófico aconteceu e para tudo, um kernel panic. A tela congela, o texto de erro aparece e o sistema precisa ser reiniciado na força. É o equivalente da tela azul do Windows.
