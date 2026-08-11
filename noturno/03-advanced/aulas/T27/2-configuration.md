@@ -66,7 +66,7 @@ O Kbuild modifica o `.config` desativamento todos os milhares de drivers de hard
 
 Após gerar a configuração base, o próximo passo obrigatório é a revisão e o ajuste manual. O Kbuild fornece várias interfaces (como `xconfig` para ambientes gráficos Qt e `gconfig` para GTK) mas a ferramenta universal é o `make menuconfig`.
 
-A execução deste comando precisa da biblioteca de desenvolvimento `ncurses` (libncurses-dev` em sistemas Debian/Ubuntu). O `menuconfig` compila um pequeno utilitário em C (`mconf`) e executa, apresentando uma interface de usuário baseada em texto com menus hierárquicos, fundos azuis e caixas de diálogo.
+A execução deste comando precisa da biblioteca de desenvolvimento `ncurses` (`libncurses-dev` em sistemas Debian/Ubuntu). O `menuconfig` compila um pequeno utilitário em C (`mconf`) e executa, apresentando uma interface de usuário baseada em texto com menus hierárquicos, fundos azuis e caixas de diálogo.
 
 ### Navegação e Operação no `menuconfig`
 
