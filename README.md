@@ -1,6 +1,7 @@
 # Oficina de Linux
 
 A oficina é dividida em três ciclos. Do básico até o avançado. No final de tudo, vocês vão ter construído uma distribuição Linux do zero.
+É difícil tlgd, mas se o seu coração é puro e suas intenções são boas. Vocês vão conseguir. Nós vamos conseguir.
 
 ## Os Ciclos
 
