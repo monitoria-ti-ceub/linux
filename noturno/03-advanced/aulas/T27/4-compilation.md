@@ -11,7 +11,9 @@ Quando o `make` é invocado na raiz do diretório do kernel, uma sequência comp
 
 1. Leitura da Configuração: O Kbuild lê o arquivo `.config` gerado e exporta as variáveis (ex: `CONFIG_EXT4_FS=y`) para o ambiente do `make`.
 2. Travessia Recursiva: O `make` invoca instâncias filhas de si mesmo para entrar recursivamente nos subdiretórios principais
-
+3. Compilação: Para cada arquivo em C,o Kbuild chama o GNU Compiler Collection (GCC). O GCC faz a análise léxica, sintática, otimização e geração de código Assembly, que é passado para o montador (GNU Assembler, `as`) para gerar um arquivo objeto relocável (`.o`). Este arquivo contém código de máquina mas ainda não está pronto para ser executado pois as referências de funções em outros arquivos (símbolos externos) ainda não foram resolvidas.
+4. Ligação: Após gerar milhares de arquivos `.o`, o Kbuild chama o GNU Linker (`ld`). O linker é responsável por pegar todos os arquivos `.o` que correspondem às opções marcadas como `y` (built-in) e "cola" eles, resolvendo as referências cruzadas entre eles. O resultado deste processo massivo de ligação é um único e imenso arquivo executável, não compactado, chamado `vmlinux`, que reside na raiz do diretório de compilação.
+5. Compressão e Geração da Imagem: O arquivo `vmlinux` contém o código do kernel mas também contém muitas informações de depuração (debug symbols) e seções (não-essenciais) para a execução. O Kbuild executa um processo de stripping (usando o utilitário `strip`) para remover essas informações, reduzindo o tamanho do binário. O binário stripped é compactado utilizando o algoritmo escolhido na configuração (usually, GZIP, lZMA ou LZ4) e um pequeno código de descompactação (o bootstrap code) é anexado no início do arquivo compactado. O produto final é o arquivo `bzImage` (Big Zlib Image), que é a imagem do kernel que será carregada pelo bootloader. Este arquivo é depositado no diretório específico da arquitetura, como `arch/x86/boot/bzImage`.
 
 ## Paralelismo
 
@@ -36,4 +38,13 @@ Nas séries mais antigas do kernel Linux (2.4 <=), o processo de compilação er
 
 Era uma confusão pois era fácil esquecer de compilar os módulos e se deparar com um sistema sem suporte de rede ou som após a reinicialização.
 
-A partir da série 2.6 do kernel, o sistema Kbuild foi reestruturado. 
+A partir da série 2.6 do kernel, o sistema Kbuild foi reestruturado. A distinçãoexplícita entre a compilação da imagem e dos módulos foi abolida no fluxo de trabalho padrão.
+Ao executar `make` ou `make -j$(nproc)`, o Kbuild executa as duas tarefas de maneira simultânea. Ele compila a imagem do kernel (`bzImage`) e compila todos os módulos carregáveis (`.ko`). A execução de `make modules` é, na maioria dos casos, redundante.
+
+A única execução em que `make modules` ainda é útil, é no cenário de desenvolvimento rápido de um driver específico. Se um desenvolvedor alterar o código de um único módulo e quiser recompilar os módulos (para economizar segundos que o Kbuild levaria verificando se a imagem precisa ser relinkada), ele pode executar `make modules`.
+
+## `make modules_install`
+
+Enquanto o `make` gera os arquivos `.ko`, ele deixa eles espalhados pelos milhares de subdiretórios dentro da árvore de código-fonte. O sistema operacional não consegue carregar módulos que estãodispersos no diretório de código-fonte de um usuário. Eles precisam ser consolidados e instalados em um local padronizado no sistema de arquivos raiz, como `/lib/modules/<versão-do-kernel>/`.
+
+Ao contrário da compilação, a instalação não é um processo intensivo em CPU, é uma operação de cópia de arquivos e geração de índices.
