@@ -55,7 +55,33 @@ O GRUB resolve este problema através de uma arquitetura de múltiplos estágios
 
 - **Estágio 1 (`boot.img`):** Este é o código minúsculo de 446 bytes que o instalador do GRUB grava no MBR. A sua única função é localizar e carregar o próximo estágio. Ele não entende sistemas de arquivos, ele carrega setores brutos do disco baseados em endereços físicos (LBA - Logical Block Addressing) gravados nele (hardcoded) durante a instalação.
 - **Estágio 1.5 (`core.img`):** Este estágio é gravado no "espaço não alocado" (MBR gap) que existe entre o MBR (setor 0) e o início da primeira partição (setor 2048.. usually). Este espaço tem cerca de 1 MB, o que é o suficiente para conter drivers mínimos de sistema de arquivos (ex.: um driver `ext4` minúsculo).
-- **Estágio 2 (`/boot/grub/`):** O Estágio 1.5, capaz de ler o sistema de arquivos, navega até a partição `/boot`, lê os arquivos de configuração `
+- **Estágio 2 (`/boot/grub/`):** O Estágio 1.5, capaz de ler o sistema de arquivos, navega até a partição `/boot`, lê os arquivos de configuração (`grub.cfg`) e carrega o kernel + `initramfs` na memória.
+
+## UEFI
+
+O UEFI eliminou a restrição do MBR de 512 bytes e estágios complexos e hardcoded. O firmware UEFI é quase que um mini sistema operacional.
+
+1. O UEFI faz a inicialização do hardware.
+2. O UEFI busca por uma partição no disco formatada em FAT32, a **EFI System Partition (ESP)**.
+3. O UEFI tem drivers nativos para ler o sistema de arquivos FAT32.
+4. O firmware lê as variáveis de configuração interna (armazenadas na NVRAM da placa-mãe) para determinar qual aplicativo EFI (`.efi`) deve executar.
+5. O UEFI carrega o aplicativo (no caso do GRUB, é o arquivo `grubx64.efi`) da ESP para a memória e executa ele.
+
+A instalação do GRUB é mais limpa. Não há gravação em setores escondidos do disco. O instalador copia o arquivo `grubx64.efi` para a partição ESP e registra o seu caminho na NVRAM da placa-mãe utilizando a ferramenta `efibootmgr`. O arquivo `grubx64.efi` já tem os drivers de sistema necessários para localizar a partição `/boot` principal e ler o `grub.cfg`.
+
+## A Estrutura do GRUB
+
+Seja o método do boot (BIOS ou UEFI), o principal diretório de operação do GRUB no sistema de arquivos é o `/boot/grub/`. É o diretório com os componentes dinâmicos do bootloader.
+
+- **`grub.cfg`:** O arquivo de configuração principal. Este arquivo tem a lógica do menu, a definição de cores, a ordem de boot e as entradas específicas (menuentries) que definem o caminho para o kernel e seus parâmetros.
+- **`grubenv`:** Um pequeno bloco de dados de 1024 bytes utilizado pelo GRUB para armazenar variáveis de estado persistentes entre reinicializações (ex.: qual foi o último sistema operacional que foi selecionado pelo usuário).
+- **Subdiretório de Arquitetura (`1386-pc/` (BIOS), `x86_64-efi/` (UEFI)):** O diretório mais importante. Ele contém dezenas de módulos compilados dinamicamente (`.mod`). O GRUB 2 foi projetado com uma arquitetura modular. Em vez de um executável monolítico imenso, o GRUB carrega módulos sob demanda. Se o usuário quiser ler uma partição formatada em Btrfs, o GRUB carrega o módulo `btrfs.mod`. Se quiser exibir uma imagem de fundo em JPEG, carrega o módulo `jpeg.mod`.
+
+## A Instalação do GRUB
+
+A ferramenta utilizada para implantar o bootloader é o comando `grub-install`.
+
+O `grub-install` é um script complexo que orquestra o processo de implantação. Ele não é o bootloader, é a ferramenta que instala ele.
 
 
 
