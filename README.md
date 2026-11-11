@@ -11,7 +11,7 @@ Materiais escritos de cada aula, com explicações para revisão, estudo complem
 ### `plano_de_ensino.md`
 Estrutura da oficina. Objetivos, metodologia e conteúdos programáticos.
 
-### `aividade.md`
+### `atividade.md`
 Atividades práticas propostas durante a oficina.
 
 ### `saiba_mais.md`
