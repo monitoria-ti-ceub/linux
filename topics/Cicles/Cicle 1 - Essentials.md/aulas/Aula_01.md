@@ -21,8 +21,4 @@ BIOS significa Basic Input/Output System, sistema básico de entrada/saída. É 
 Em muitos computadores modernos, o termo mais correto seria UEFI, uma evolução da BIOS tradicional.
 A função principal dessa etapa é preparar a máquina para que o sistema operacional possa ser carregado. Então, a BIOS ou UEFI não é o sistema operacional em si, ela é o mecanismo de inicialização que vem antes dele.
 
-## **4. Interface Gráfica**
 
-A interface gráfica, GUI — Interface Gráfica de Usuário, é a forma visual de interação com o sistema. Ela inclui janelas, ícones, botões, menus, área de trabalho e elementos que permitem o usuário de controlar o computador usando mouse, teclado e toques.
-Mas a interface não é o sistema inteiro. Ela é uma camada de interação com o sistema, o núcleo do sistema continua funcionando independentemente dela.
-Linux mostra que o sistema pode ser usado tanto com interface gráfica quanto sem ela, apenas pelo terminal.

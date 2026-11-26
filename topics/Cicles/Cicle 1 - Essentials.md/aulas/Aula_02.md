@@ -1,4 +1,4 @@
-4. GUI
+## **4. Interface Gráfica**
 
 A interface gráfica, ou GUI (Graphic User Interface), é a forma visual de interação com o sistema operacional. É aquilo que permite ao usuário usar o computador por meio de janelas, ícones, menus, botôes, barras e ponteiro do mouse, em vez de depender apenas de comandos de texto.
 
@@ -16,6 +16,7 @@ Alguns exemplos:
 - XFCE
 - LXQt
 - Cinnamon
-- MATE
+- Hyprland
+- Niri
 
 Todos cumprem uma função parecida: oferecer ao usuário uma experiência visual para interagir com o sistema. Mas eles mudam em aparência, ferramentas, consumo de recursos e filosofia de uso.
